@@ -19,6 +19,8 @@
                 CounterBtn.Text = $"Clicked {count} times";
 
             SemanticScreenReader.Announce(CounterBtn.Text);
+
+            //Added function A and something
         }
     }
 
