@@ -1,4 +1,6 @@
-﻿namespace TermProject
+﻿using TermProject.UI;
+
+namespace TermProject
 {
     public partial class MainPage : ContentPage
     {
@@ -9,18 +11,9 @@
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnTapGetStarted(object sender, TappedEventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-
-            //Added function A and something
+            await Navigation.PushAsync(new TermProject.UI.HomePage());
         }
     }
 
