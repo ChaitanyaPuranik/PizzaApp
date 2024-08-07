@@ -2,11 +2,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TermProject.UI.MenuPage"
-             Title="MenuPage">
-    <VerticalStackLayout>
+             Title="MenuPage"
+             BackgroundColor="DarkGoldenrod"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Bruins Pizza"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            FontSize="Header"/>
+
+        <Grid ColumnDefinitions="*, 150">
+                <VerticalStackLayout Grid.Column="0">
+                    
+                </VerticalStackLayout>
+                <Image Grid.Column="1"
+                   Source="pizzaslice1"/>
+
+
+
+            </Grid>
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

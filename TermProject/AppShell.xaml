@@ -6,7 +6,8 @@
     xmlns:local="clr-namespace:TermProject"
     xmlns:view="clr-namespace:TermProject.UI"
     Shell.FlyoutBehavior="Disabled"
-    Title="TermProject">
+    Title="TermProject"
+    BackgroundColor="DarkGoldenrod">
 
     <ShellContent
         Title=""
@@ -14,8 +15,8 @@
         Route="MainPage" />
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate view:HomePage}"
-        Route="HomePage" />
+        Title=""
+        ContentTemplate="{DataTemplate view:MenuPage}"
+        Route="MenuPage" />
     
 </Shell>
