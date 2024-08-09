@@ -69,10 +69,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Business Logic\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="UI\MenuPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
