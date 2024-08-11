@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TermProject.UI.MenuPage"
              Title="MenuPage"
+             BackgroundColor="#80FAFAD2"
              Shell.NavBarIsVisible="False"
              Padding="15">
+
     <ScrollView>
         <VerticalStackLayout>
             <Border StrokeShape="RoundRectangle 10"
@@ -14,7 +16,7 @@
                     Padding="15">
 
                 <Grid ColumnDefinitions="*, 150"
-              RowDefinitions="*,Auto">
+                      RowDefinitions="*,Auto">
             
                 <VerticalStackLayout Grid.Row="0" Grid.Column="0">
                     <Label Text="Best Offers"
@@ -22,15 +24,122 @@
                            FontAttributes="Bold"
                            VerticalOptions="Center"
                            TextColor="Black"/>
+                    
                     <Label Text="Sheridan students can get 30% additional discount" Margin="10" FontSize="Small"/>
                     </VerticalStackLayout>
+
+                    <Button 
+                        HorizontalOptions="Start"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Get now"
+                        TextColor="Black"
+                        BackgroundColor="LightGoldenrodYellow"/>
+                    
                     <Image
                     Grid.RowSpan="2" Grid.Column="1"
-                   Source="pizzaoffer.png"
+                    Source="pizzaoffer.png"
                     HeightRequest="150"/>
                 </Grid>
             </Border>
-        
-    </VerticalStackLayout>
+
+            <Grid ColumnDefinitions="*,*">
+                <Label Grid.Column="0"
+                       Text="Popular Items"
+                       HorizontalOptions="Start"
+                       Margin="10"/>
+
+                <Label 
+                       Margin="10"
+                       Grid.Column="1"
+                       Text="View all"
+                       TextDecorations="Underline"
+                       HorizontalOptions="End"/>
+            </Grid>
+            
+            <!--<HorizontalStackLayout Margin="10">-->
+                <Grid ColumnDefinitions="*,*">
+                    
+                    <!--Left Side ListView-->
+                    <ListView Grid.Column="0" 
+                              ItemsSource="{Binding}" 
+                              Background="LightGoldenrodYellow" 
+                              x:Name="LeftSideListView" 
+                              HorizontalOptions="CenterAndExpand"
+                              Margin="5">
+                        
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10" Margin="0,0,0,10">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                        <Image Grid.Row="0" Source="{Binding Image}" 
+                                               WidthRequest="100" HeightRequest="100" 
+                                               VerticalOptions="Start" HorizontalOptions="Center"/>
+                                        
+                                        <Label Grid.Row="1" 
+                                               Text="{Binding Name}" Padding="10" 
+                                               VerticalOptions="End" HorizontalOptions="Center" 
+                                               FontSize="Medium" TextColor="Black"/>
+
+                                    <BoxView Grid.Row="2" HeightRequest="5" 
+                                             Color="Gray" 
+                                             Opacity="2"
+                                             HorizontalOptions="FillAndExpand"/>
+
+                                </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!--Right Side ListView-->
+                    <ListView Grid.Column="1" x:Name="RightSideListView" 
+                              ItemsSource="{Binding}" 
+                              Background="LightGoldenrodYellow" 
+                              HorizontalOptions="CenterAndExpand"
+                              Margin="5">
+                        
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                <Grid Padding="10" Margin="0,0,0,10">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                        <Image Grid.Column="0" Grid.Row="0" 
+                                               Source="{Binding Image}" WidthRequest="100" HeightRequest="100" 
+                                               VerticalOptions="Start" HorizontalOptions="Center"/>
+                                        
+                                        <Label Grid.Row="1" 
+                                               Text="{Binding Name}" Padding="10" 
+                                               VerticalOptions="End" HorizontalOptions="Center" 
+                                               FontSize="Medium" TextColor="Black"/>
+
+                                        <BoxView Grid.Row="2" HeightRequest="5" 
+                                                 Color="Gray" 
+                                                 Opacity="2"
+                                                 HorizontalOptions="FillAndExpand"/>
+
+                                </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            
+            <!--</HorizontalStackLayout>-->
+            
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

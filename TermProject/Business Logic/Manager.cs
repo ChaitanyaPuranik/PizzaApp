@@ -9,21 +9,30 @@ namespace TermProject.Business_Logic
 {
     public class Manager
     {
-        private ObservableCollection<Pizza> _pizzas = new ObservableCollection<Pizza>()
+        private ObservableCollection<Pizza> _pizzas1 = new ObservableCollection<Pizza>()
         {
-            new Pizza("Pizza 1", "...", 7.45),
-            new Pizza("Pizza 2","...", 6.80),
-            new Pizza("Pizza 3","...", 8.25),
-            new Pizza("Pizza 4","...", 9.75),
-            new Pizza("Pizza 5","...", 5.55),
-            new Pizza("Pizza 6","...", 6.15),
+            new Pizza("Pizza 1", "...", 7.45,"pizza_1.png"),
+            new Pizza("Pizza 3","...", 8.25, "pizza_3.png"),
+            new Pizza("Pizza 5","...", 5.55, "pizza_5.png"),
+        };
+
+        private ObservableCollection<Pizza> _pizzas2 = new ObservableCollection<Pizza>()
+        {
+            new Pizza("Pizza 2","...", 6.80, "pizza_2.png"),
+            new Pizza("Pizza 4","...", 9.75, "pizza_4.png"),
+            new Pizza("Pizza 6","...", 6.15, "pizza_6.png"),
         };
 
         private ObservableCollection<Pizza> _selectedPizzas = new ObservableCollection<Pizza>();
 
-        public ObservableCollection<Pizza> Pizzas
+        public ObservableCollection<Pizza> Pizzas1
         {
-            get { return _selectedPizzas; }
+            get { return _pizzas1; }
+        }
+
+        public ObservableCollection<Pizza> Pizzas2
+        {
+            get { return _pizzas2;}
         }
 
         public ObservableCollection<Pizza> SelectedPizzas

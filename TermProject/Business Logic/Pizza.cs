@@ -11,12 +11,15 @@ namespace TermProject.Business_Logic
         private string _name;
         private string _description;
         private double _price;
+        private string _image;
 
-        public Pizza(string name, string description, double _price)
+        public Pizza(string name, string description, double _price, string image)
         {
             Name = name;
             Description = description;
-            Price = _price; 
+            Price = _price;
+            Image = image;
+
         }
         #region Properties
 
@@ -43,6 +46,15 @@ namespace TermProject.Business_Logic
                     throw new Exception("Description cannot be empty.");
                 }
                 _description = value;
+            }
+        }
+
+        public string Image
+        {
+            get { return _image; }
+            set
+            {
+                _image = value;
             }
         }
 
