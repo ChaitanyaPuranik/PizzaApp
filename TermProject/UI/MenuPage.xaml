@@ -57,7 +57,6 @@
                        HorizontalOptions="End"/>
             </Grid>
             
-            <!--<HorizontalStackLayout Margin="10">-->
                 <Grid ColumnDefinitions="*,*">
                     
                     <!--Left Side ListView-->
@@ -77,6 +76,7 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
                                         <Image Grid.Row="0" Source="{Binding Image}" 
@@ -87,46 +87,29 @@
                                                Text="{Binding Name}" Padding="10" 
                                                VerticalOptions="End" HorizontalOptions="Center" 
                                                FontSize="Medium" TextColor="Black"/>
-
-                                    <BoxView Grid.Row="2" HeightRequest="5" 
-                                             Color="Gray" 
-                                             Opacity="2"
-                                             HorizontalOptions="FillAndExpand"/>
-
-                                </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                    <!--Right Side ListView-->
-                    <ListView Grid.Column="1" x:Name="RightSideListView" 
-                              ItemsSource="{Binding}" 
-                              Background="LightGoldenrodYellow" 
-                              HorizontalOptions="CenterAndExpand"
-                              Margin="5">
-                        
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                <Grid Padding="10" Margin="0,0,0,10">
-
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                        <Image Grid.Column="0" Grid.Row="0" 
-                                               Source="{Binding Image}" WidthRequest="100" HeightRequest="100" 
-                                               VerticalOptions="Start" HorizontalOptions="Center"/>
                                         
-                                        <Label Grid.Row="1" 
-                                               Text="{Binding Name}" Padding="10" 
-                                               VerticalOptions="End" HorizontalOptions="Center" 
-                                               FontSize="Medium" TextColor="Black"/>
+                                    <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center">
+                                        <ImageButton
+                                            Source="plus.png"
+                                            HeightRequest="5"
+                                            WidthRequest="5"/>
 
-                                        <BoxView Grid.Row="2" HeightRequest="5" 
+                                        <Label Text="0"
+                                               TextColor="Black"
+                                               FontSize="Medium"
+                                               Margin="10"/>
+
+                                        <ImageButton
+                                            Source="minus.png"
+                                            HeightRequest="10"
+                                            WidthRequest="5"/>
+
+                                    </HorizontalStackLayout>
+                                        
+
+                                        <BoxView 
+                                                 Margin="5"
+                                                 Grid.Row="3" HeightRequest="5" 
                                                  Color="Gray" 
                                                  Opacity="2"
                                                  HorizontalOptions="FillAndExpand"/>
@@ -136,10 +119,72 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </Grid>
-            
-            <!--</HorizontalStackLayout>-->
-            
+
+                    <!--Right Side ListView-->
+                <ListView Grid.Column="1" x:Name="RightSideListView" 
+                              ItemsSource="{Binding}" 
+                              Background="LightGoldenrodYellow" 
+                              HorizontalOptions="CenterAndExpand"
+                              Margin="5">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10" Margin="0,0,0,10">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Image Grid.Column="0" Grid.Row="0" 
+                                               Source="{Binding Image}" WidthRequest="100" HeightRequest="100" 
+                                               VerticalOptions="Start" HorizontalOptions="Center"/>
+
+                                    <Label Grid.Row="1" 
+                                               Text="{Binding Name}" Padding="10" 
+                                               VerticalOptions="End" HorizontalOptions="Center" 
+                                               FontSize="Medium" TextColor="Black"/>
+
+                                    <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center">
+                                        <ImageButton
+                                            Source="plus.png"
+                                            HeightRequest="5"
+                                            WidthRequest="5"/>
+
+                                        <Label Text="0"
+                                               TextColor="Black"
+                                               FontSize="Medium"
+                                               Margin="10"/>
+
+                                        <ImageButton
+                                            Source="minus.png"
+                                            HeightRequest="10"
+                                            WidthRequest="5"/>
+
+                                    </HorizontalStackLayout>
+
+                                    <BoxView    
+                                         Grid.Row="3" HeightRequest="5" 
+                                         Color="Gray" 
+                                         Opacity="2"
+                                         HorizontalOptions="FillAndExpand"
+                                         Margin="5"/>
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+            <Button
+                    Text="View Cart"
+                    BackgroundColor="Goldenrod"
+                    Margin="10"
+                    />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

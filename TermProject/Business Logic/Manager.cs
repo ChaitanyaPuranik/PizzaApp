@@ -40,9 +40,11 @@ namespace TermProject.Business_Logic
             get { return _selectedPizzas; }
         }
 
+
+
         public void AddToOrder(Pizza pizza)
         {
-            if(pizza != null) 
+            if(pizza != null && !_selectedPizzas.Contains(pizza)) 
             {
                 _selectedPizzas.Add(pizza);
             }
