@@ -49,12 +49,6 @@
                        HorizontalOptions="Start"
                        Margin="10"/>
 
-                <Label 
-                       Margin="10"
-                       Grid.Column="1"
-                       Text="View all"
-                       TextDecorations="Underline"
-                       HorizontalOptions="End"/>
             </Grid>
             
                 <Grid ColumnDefinitions="*,*">
@@ -64,6 +58,7 @@
                               ItemsSource="{Binding}" 
                               Background="LightGoldenrodYellow" 
                               x:Name="LeftSideListView" 
+                              ItemSelected="OnClickAdd"
                               HorizontalOptions="CenterAndExpand"
                               Margin="5">
                         
@@ -73,6 +68,7 @@
                                     <Grid Padding="10" Margin="0,0,0,10">
 
                                         <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
@@ -87,32 +83,28 @@
                                                Text="{Binding Name}" Padding="10" 
                                                VerticalOptions="End" HorizontalOptions="Center" 
                                                FontSize="Medium" TextColor="Black"/>
-                                        
-                                    <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center">
-                                        <ImageButton
-                                            Source="plus.png"
-                                            HeightRequest="5"
-                                            WidthRequest="5"/>
 
-                                        <Label Text="0"
-                                               TextColor="Black"
-                                               FontSize="Medium"
-                                               Margin="10"/>
+                                    <Label Grid.Row="2"
+                                           Text="{Binding Price, StringFormat='${0:F2}'}"
+                                           Padding="10"
+                                           TextColor="Black"
+                                           FontSize="Small"
+                                           HorizontalOptions="Center"/>
 
-                                        <ImageButton
-                                            Source="minus.png"
-                                            HeightRequest="10"
-                                            WidthRequest="5"/>
-
-                                    </HorizontalStackLayout>
-                                        
+                                    <Label 
+                                            Grid.Row="3"
+                                            TextColor="Black"
+                                            FontSize="Medium"
+                                            TextDecorations="Underline"
+                                            HorizontalOptions="Center"
+                                            Text="Click to Add"/>
 
                                         <BoxView 
-                                                 Margin="5"
-                                                 Grid.Row="3" HeightRequest="5" 
-                                                 Color="Gray" 
-                                                 Opacity="2"
-                                                 HorizontalOptions="FillAndExpand"/>
+                                                Margin="5"
+                                                Grid.Row="4" HeightRequest="5" 
+                                                Color="Gray" 
+                                                Opacity="2"
+                                                HorizontalOptions="FillAndExpand"/>
 
                                 </Grid>
                                 </ViewCell>
@@ -125,6 +117,7 @@
                               ItemsSource="{Binding}" 
                               Background="LightGoldenrodYellow" 
                               HorizontalOptions="CenterAndExpand"
+                              ItemSelected="OnClickAddPizza"
                               Margin="5">
 
                     <ListView.ItemTemplate>
@@ -133,6 +126,7 @@
                                 <Grid Padding="10" Margin="0,0,0,10">
 
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
@@ -148,26 +142,23 @@
                                                VerticalOptions="End" HorizontalOptions="Center" 
                                                FontSize="Medium" TextColor="Black"/>
 
-                                    <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center">
-                                        <ImageButton
-                                            Source="plus.png"
-                                            HeightRequest="5"
-                                            WidthRequest="5"/>
+                                    <Label Grid.Row="2"
+                                           Text="{Binding Price, StringFormat='${0:F2}'}"
+                                           Padding="10"
+                                           TextColor="Black"
+                                           FontSize="Small"
+                                           HorizontalOptions="Center"/>
 
-                                        <Label Text="0"
-                                               TextColor="Black"
-                                               FontSize="Medium"
-                                               Margin="10"/>
-
-                                        <ImageButton
-                                            Source="minus.png"
-                                            HeightRequest="10"
-                                            WidthRequest="5"/>
-
-                                    </HorizontalStackLayout>
+                                    <Label 
+                                            Grid.Row="3"
+                                            TextColor="Black"
+                                            FontSize="Medium"
+                                            TextDecorations="Underline"
+                                            HorizontalOptions="Center"
+                                            Text="Click to Add"/>
 
                                     <BoxView    
-                                         Grid.Row="3" HeightRequest="5" 
+                                         Grid.Row="4" HeightRequest="5" 
                                          Color="Gray" 
                                          Opacity="2"
                                          HorizontalOptions="FillAndExpand"
@@ -184,6 +175,7 @@
                     Text="View Cart"
                     BackgroundColor="Goldenrod"
                     Margin="10"
+                    Clicked="OnClickViewCart"
                     />
         </VerticalStackLayout>
     </ScrollView>

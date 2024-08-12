@@ -11,16 +11,16 @@ namespace TermProject.Business_Logic
     {
         private ObservableCollection<Pizza> _pizzas1 = new ObservableCollection<Pizza>()
         {
-            new Pizza("Pizza 1", "...", 7.45,"pizza_1.png"),
-            new Pizza("Pizza 3","...", 8.25, "pizza_3.png"),
-            new Pizza("Pizza 5","...", 5.55, "pizza_5.png"),
+            new Pizza("Cheese Pizza", "A Pizza topped only with cheese and tomato sauce", 7.45,"pizza_1.png"),
+            new Pizza("Pepperoni Pizza","Lots of cheese topped with crispy, salty round pepperoni", 8.25, "pizza_3.png"),
+            new Pizza("Margherita Pizza","Pizza made with fresh basil, mozzarella and tomatoes", 5.55, "pizza_5.png"),
         };
 
         private ObservableCollection<Pizza> _pizzas2 = new ObservableCollection<Pizza>()
         {
-            new Pizza("Pizza 2","...", 6.80, "pizza_2.png"),
-            new Pizza("Pizza 4","...", 9.75, "pizza_4.png"),
-            new Pizza("Pizza 6","...", 6.15, "pizza_6.png"),
+            new Pizza("Detroit-style Pizza","Thin crust pizza with Californian toppings like figs, baby aruguala and pesto", 6.80, "pizza_2.png"),
+            new Pizza("Pizzeta","Small version of pizza about 3 inches in size and shape", 9.75, "pizza_4.png"),
+            new Pizza("Veggie Pizza","Topped with zucchini, bell peppers, sun dried tomatoes with little Parmesan cheese", 6.15, "pizza_6.png"),
         };
 
         private ObservableCollection<Pizza> _selectedPizzas = new ObservableCollection<Pizza>();

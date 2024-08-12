@@ -18,5 +18,10 @@
         Title=""
         ContentTemplate="{DataTemplate view:MenuPage}"
         Route="MenuPage" />
-    
+
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate view:ViewCart}"
+        Route="ViewCart" />
+
 </Shell>
