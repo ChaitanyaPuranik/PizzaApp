@@ -54,14 +54,13 @@
                     <Label Text="Get Started"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"/>
-                    
+
                     <Image Source="arrowright.png"
                            VerticalOptions="Center"
                            HeightRequest="35"
                            WidthRequest="35"/>
-                    
+
                 </HorizontalStackLayout>
-                
         </Border>
 
 

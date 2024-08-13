@@ -7,7 +7,7 @@
              BackgroundColor="LightYellow">
     <ScrollView>
     <VerticalStackLayout>
-        <ListView Margin="50" ItemsSource="{Binding}" x:Name="MenuListView" HorizontalOptions="Center" BackgroundColor="Goldenrod">
+        <ListView Margin="50" ItemsSource="{Binding}" ItemSelected="RemoveOnTap" x:Name="MenuListView" HorizontalOptions="Center" BackgroundColor="Goldenrod">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -43,7 +43,7 @@
                                             VerticalOptions="Center" HorizontalOptions="End"/>
                                 <!--Description Label-->
                                 <Label 
-                                            TextColor="Black" Grid.ColumnSpan="2"
+                                            TextColor="Black" 
                                             Grid.Column="1" Grid.Row="1" Text="{Binding Description}" FontSize="Micro" 
                                             HorizontalOptions="Start" VerticalOptions="Start"/>
 
@@ -59,6 +59,17 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
         </ListView>
+
+            <Button 
+                    x:Name="ClearCartButton"
+                    Text="Clear Cart"
+                    Clicked="OnClickClearCart"
+                    Background="Goldenrod"
+                    TextColor="White"
+                    Margin="10"
+                    HorizontalOptions="Center"
+                    />
+        
             <Label
                 Margin="30"
                 x:Name="EmptyLabel"
@@ -68,6 +79,7 @@
                 FontSize="Medium"
                 TextColor="Black"
                 HorizontalOptions="Center"/>
+        
             <Button
                 Clicked="OnClickGoToMenu"
                 x:Name="EmptyButton"
@@ -80,6 +92,61 @@
                 VerticalOptions="Center"/>
 
 
+            <Border 
+                StrokeShape="RoundRectangle 30"
+                StrokeThickness="0"
+                BackgroundColor="Goldenrod"
+                HeightRequest="50"
+                VerticalOptions="End"
+                Margin="10">
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTapCheckout"/>
+                </Border.GestureRecognizers>
+
+                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*,*">
+
+                    <Label
+                        Grid.Row="0" Grid.Column="0"
+                        Text="Total Items:"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        />
+
+                    <Label
+                        Grid.Row="0" Grid.Column="1"
+                        x:Name="TotalItemsLabel"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start"
+                        />
+
+                    <Label
+                        Grid.Row="0" Grid.Column="2"
+                        x:Name="TotalPriceLabel"
+                        TextColor="Black"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Center"
+                        Padding="10"/>
+
+
+                    <Label 
+                        Grid.Row="1" Grid.Column="1"
+                        Text="Checkout"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Padding="0,0,0,10"/>
+
+                </Grid>
+
+
+
+
+                
+            </Border>
+        
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

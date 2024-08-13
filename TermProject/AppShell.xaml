@@ -24,4 +24,9 @@
         ContentTemplate="{DataTemplate view:ViewCart}"
         Route="ViewCart" />
 
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate view:CheckOutPage}"
+        Route="CheckOutPage" />
+
 </Shell>

@@ -51,21 +51,23 @@
 
             </Grid>
             
-                <Grid ColumnDefinitions="*,*">
+                <Grid ColumnDefinitions="*,*" RowDefinitions="auto">
                     
                     <!--Left Side ListView-->
                     <ListView Grid.Column="0" 
+                              Grid.Row="0"
                               ItemsSource="{Binding}" 
                               Background="LightGoldenrodYellow" 
                               x:Name="LeftSideListView" 
                               ItemSelected="OnClickAdd"
-                              HorizontalOptions="CenterAndExpand"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Center"
                               Margin="5">
                         
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid Padding="10" Margin="0,0,0,10">
+                                    <Grid Padding="10" Margin="10,10,10,10">
 
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -113,17 +115,20 @@
                     </ListView>
 
                     <!--Right Side ListView-->
-                <ListView Grid.Column="1" x:Name="RightSideListView" 
+                <ListView Grid.Column="1"
+                          Grid.Row="0"
+                          x:Name="RightSideListView" 
                               ItemsSource="{Binding}" 
                               Background="LightGoldenrodYellow" 
-                              HorizontalOptions="CenterAndExpand"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Center"
                               ItemSelected="OnClickAddPizza"
                               Margin="5">
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid Padding="10" Margin="0,0,0,10">
+                                <Grid Padding="10" Margin="10,10,10,10">
 
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>
