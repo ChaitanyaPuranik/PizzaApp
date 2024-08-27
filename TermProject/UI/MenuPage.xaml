@@ -50,131 +50,39 @@
                        Margin="10"/>
 
             </Grid>
-            
-                <Grid ColumnDefinitions="*,*" RowDefinitions="auto">
-                    
-                    <!--Left Side ListView-->
-                    <ListView Grid.Column="0" 
-                              Grid.Row="0"
-                              ItemsSource="{Binding}" 
-                              Background="LightGoldenrodYellow" 
-                              x:Name="LeftSideListView" 
-                              ItemSelected="OnClickAdd"
-                              HorizontalOptions="Center"
-                              VerticalOptions="Center"
-                              Margin="5">
-                        
-                        <ListView.ItemTemplate>
+
+
+            <CollectionView ItemsSource="{Binding}" x:Name="PizzaCollection" BackgroundColor="DarkGoldenrod" SelectionMode="Multiple" SelectionChanged="OnSelectingItem">
+                <CollectionView.ItemsLayout>
+                            <!-- Create a Grid layout with 2 columns -->
+                            <GridItemsLayout Orientation="Vertical" 
+                                 Span="2" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <Grid Padding="10" Margin="10,10,10,10">
+                                <!-- Define the layout for each item -->
+                                <Grid Padding="10">
+                                    <Frame BorderColor="LightGoldenrodYellow" 
+                                           CornerRadius="5"
+                                           HasShadow="True"
+                                           BackgroundColor="LightGoldenrodYellow">
+                                    <StackLayout>
+                                    <Image  Source="{Binding Image}" HeightRequest="75" WidthRequest="75"/>
+                                    <Label Text="{Binding Name}" 
+                                               FontSize="Medium" 
+                                               TextColor="Black"
+                                               FontAttributes="Bold" />
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                        <Image Grid.Row="0" Source="{Binding Image}" 
-                                               WidthRequest="100" HeightRequest="100" 
-                                               VerticalOptions="Start" HorizontalOptions="Center"/>
-                                        
-                                        <Label Grid.Row="1" 
-                                               Text="{Binding Name}" Padding="10" 
-                                               VerticalOptions="End" HorizontalOptions="Center" 
-                                               FontSize="Medium" TextColor="Black"/>
-
-                                    <Label Grid.Row="2"
-                                           Text="{Binding Price, StringFormat='${0:F2}'}"
-                                           Padding="10"
-                                           TextColor="Black"
-                                           FontSize="Small"
-                                           HorizontalOptions="Center"/>
-
-                                    <Label 
-                                            Grid.Row="3"
-                                            TextColor="Black"
-                                            FontSize="Medium"
-                                            TextDecorations="Underline"
-                                            HorizontalOptions="Center"
-                                            Text="Click to Add"/>
-
-                                        <BoxView 
-                                                Margin="5"
-                                                Grid.Row="4" HeightRequest="5" 
-                                                Color="Gray" 
-                                                Opacity="2"
-                                                HorizontalOptions="FillAndExpand"/>
-
+                                    <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" 
+                                           FontSize="Small" 
+                                           TextColor="Black" />
+                                    </StackLayout>
+                                    </Frame>
                                 </Grid>
-                                </ViewCell>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                    <!--Right Side ListView-->
-                <ListView Grid.Column="1"
-                          Grid.Row="0"
-                          x:Name="RightSideListView" 
-                              ItemsSource="{Binding}" 
-                              Background="LightGoldenrodYellow" 
-                              HorizontalOptions="Center"
-                              VerticalOptions="Center"
-                              ItemSelected="OnClickAddPizza"
-                              Margin="5">
-
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid Padding="10" Margin="10,10,10,10">
-
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <Image Grid.Column="0" Grid.Row="0" 
-                                               Source="{Binding Image}" WidthRequest="100" HeightRequest="100" 
-                                               VerticalOptions="Start" HorizontalOptions="Center"/>
-
-                                    <Label Grid.Row="1" 
-                                               Text="{Binding Name}" Padding="10" 
-                                               VerticalOptions="End" HorizontalOptions="Center" 
-                                               FontSize="Medium" TextColor="Black"/>
-
-                                    <Label Grid.Row="2"
-                                           Text="{Binding Price, StringFormat='${0:F2}'}"
-                                           Padding="10"
-                                           TextColor="Black"
-                                           FontSize="Small"
-                                           HorizontalOptions="Center"/>
-
-                                    <Label 
-                                            Grid.Row="3"
-                                            TextColor="Black"
-                                            FontSize="Medium"
-                                            TextDecorations="Underline"
-                                            HorizontalOptions="Center"
-                                            Text="Click to Add"/>
-
-                                    <BoxView    
-                                         Grid.Row="4" HeightRequest="5" 
-                                         Color="Gray" 
-                                         Opacity="2"
-                                         HorizontalOptions="FillAndExpand"
-                                         Margin="5"/>
-
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
             <Button
                     Text="View Cart"
