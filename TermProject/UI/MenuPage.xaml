@@ -52,7 +52,7 @@
             </Grid>
 
 
-            <CollectionView ItemsSource="{Binding}" x:Name="PizzaCollection" BackgroundColor="DarkGoldenrod" SelectionMode="Multiple" SelectionChanged="OnSelectingItem">
+            <CollectionView ItemsSource="{Binding Pizzas}" x:Name="PizzaCollection" BackgroundColor="DarkGoldenrod">
                 <CollectionView.ItemsLayout>
                             <!-- Create a Grid layout with 2 columns -->
                             <GridItemsLayout Orientation="Vertical" 
@@ -68,15 +68,22 @@
                                            HasShadow="True"
                                            BackgroundColor="LightGoldenrodYellow">
                                     <StackLayout>
-                                    <Image  Source="{Binding Image}" HeightRequest="75" WidthRequest="75"/>
-                                    <Label Text="{Binding Name}" 
+                                        <Image  Source="{Binding Image}" HeightRequest="75" WidthRequest="75"/>
+                                        <Label Text="{Binding Name}" 
                                                FontSize="Medium" 
                                                TextColor="Black"
                                                FontAttributes="Bold" />
 
-                                    <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" 
-                                           FontSize="Small" 
-                                           TextColor="Black" />
+                                        <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" 
+                                               FontSize="Small" 
+                                               TextColor="Black" />
+
+                                        <Button Text="Add To Cart"
+                                                Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.AddToCartCommand}"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="DarkGoldenrod"
+                                                TextColor="Black"
+                                                HorizontalOptions="Center"/>
                                     </StackLayout>
                                     </Frame>
                                 </Grid>
