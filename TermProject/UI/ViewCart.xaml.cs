@@ -1,3 +1,4 @@
+using System.Windows.Input;
 using TermProject.Business_Logic;
 
 namespace TermProject.UI;
@@ -5,33 +6,19 @@ namespace TermProject.UI;
 public partial class ViewCart : ContentPage
 {
 	Manager _manager;
+	public ICommand RemoveFromCartCommand { get; set; }
 
 	public ViewCart(Manager manager)
 	{
 		InitializeComponent();
 		_manager = manager;
+		RemoveFromCartCommand = new Command<Pizza>(OnRemoveFromCart);
         Bill _bill = new Bill(_manager);
 		TotalPriceLabel.Text = $"$ {_bill.TotalPrice.ToString()}";
-        BindingContext = _manager.SelectedPizzas;
-		CheckIsCartEmpty();
+        BindingContext = this;
+		PizzaCollection.ItemsSource = _manager.SelectedPizzas;
 		ClearCartbuttonVisibility();
 		TotalItemsLabel.Text = _manager.SelectedPizzas.Count.ToString();
-	}
-
-	public void CheckIsCartEmpty()
-	{
-		if(_manager.SelectedPizzas.Count == 0)
-		{
-			MenuListView.IsEnabled = false;
-			MenuListView.IsVisible = false;
-
-			EmptyButton.IsEnabled = true;
-			EmptyButton.IsVisible = true;
-
-			EmptyLabel.IsEnabled = true;
-			EmptyLabel.IsVisible = true;
-		}
-		
 	}
 
 	private void ClearCartbuttonVisibility()
@@ -43,21 +30,22 @@ public partial class ViewCart : ContentPage
 		}
 	}
 
+	private void OnRemoveFromCart(Pizza selectedPizza)
+	{
+		_manager.RemoveFromCart(selectedPizza);
+        DisplayAlert("", $"{selectedPizza.Name} removed from cart", "Ok");
+
+    }
+
     private async void OnClickGoToMenu(object sender, EventArgs e)
     {
 		await Navigation.PopAsync();
     }
 
-    private void RemoveOnTap(object sender, SelectedItemChangedEventArgs e)
-    {
-		_manager.Remove((Pizza)MenuListView.SelectedItem);
-		CheckIsCartEmpty();
-    }
 
     private void OnClickClearCart(object sender, EventArgs e)
     {
 		_manager.SelectedPizzas.Clear();
-		CheckIsCartEmpty();
     }
 
     private void OnTapCheckout(object sender, TappedEventArgs e)

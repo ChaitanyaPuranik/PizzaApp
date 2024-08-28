@@ -42,7 +42,7 @@ namespace TermProject.Business_Logic
             }
         }
 
-        public void Remove(Pizza pizza)
+        public void RemoveFromCart(Pizza pizza)
         {
             _selectedPizzas.Remove(pizza);
         }

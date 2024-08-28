@@ -69,12 +69,13 @@
                                            BackgroundColor="LightGoldenrodYellow">
                                     <StackLayout>
                                         <Image  Source="{Binding Image}" HeightRequest="75" WidthRequest="75"/>
+                                        
                                         <Label Text="{Binding Name}" 
                                                FontSize="Medium" 
                                                TextColor="Black"
                                                FontAttributes="Bold" />
 
-                                        <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" 
+                                        <Label Text="{Binding Price, StringFormat='Price: ${0:C}'}" 
                                                FontSize="Small" 
                                                TextColor="Black" />
 

@@ -7,58 +7,46 @@
              BackgroundColor="LightYellow">
     <ScrollView>
     <VerticalStackLayout>
-        <ListView Margin="50" ItemsSource="{Binding}" ItemSelected="RemoveOnTap" x:Name="MenuListView" HorizontalOptions="Center" BackgroundColor="Goldenrod">
 
-                <ListView.ItemTemplate>
+            <CollectionView ItemsSource="{Binding Pizzas}" x:Name="PizzaCollection" BackgroundColor="DarkGoldenrod">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10">
-                                <Grid.ColumnDefinitions>
-                                    <!--Column for Image-->
-                                    <ColumnDefinition Width="*"/>
-                                    <!--Column for Dish Name and description-->
-                                    <ColumnDefinition Width="*"/>
-                                    <!--Column for Price-->
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                        <!-- Define the layout for each item -->
+                        <Grid Padding="10">
+                            <Frame BorderColor="LightGoldenrodYellow" 
+                               CornerRadius="5"
+                               HasShadow="True"
+                               BackgroundColor="LightGoldenrodYellow">
+                                <HorizontalStackLayout Spacing="20">
+                                    
+                                    <StackLayout Spacing="10">
+                                        <Image  Source="{Binding Image}" HeightRequest="75" WidthRequest="75"/>
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
+                                        <Label Text="{Binding Name}" 
+                                               FontSize="Medium" 
+                                               TextColor="Black"
+                                               FontAttributes="Bold"/>
 
-                                <Image Grid.Column="0" Grid.Row="0" Source="{Binding Image}" 
-                                            WidthRequest="100" HeightRequest="100" 
-                                            VerticalOptions="Center" HorizontalOptions="Start"/>
+                                    </StackLayout>
+                                    
+                                    <Label Text="{Binding Description}" 
+                                           FontSize="Small" 
+                                           TextColor="Black"/>
 
-                                <!--Name Label-->
-                                <Label 
-                                            TextColor="Black"
-                                            Grid.Column="1" Grid.Row="0" Text="{Binding Name}" FontSize="Medium" 
-                                            VerticalOptions="Center" HorizontalOptions="Start"/>
-                                <!--Price Label-->
-                                <Label 
-                                            TextColor="Black"
-                                            Grid.Column="2" Grid.Row="0" Text="{Binding Price, StringFormat='${0:F2}'}" FontSize="Medium" 
-                                            VerticalOptions="Center" HorizontalOptions="End"/>
-                                <!--Description Label-->
-                                <Label 
-                                            TextColor="Black" 
-                                            Grid.Column="1" Grid.Row="1" Text="{Binding Description}" FontSize="Micro" 
-                                            HorizontalOptions="Start" VerticalOptions="Start"/>
-
-                                <Label 
-                                           Text="Tap to remove"
-                                           TextColor="Black"
-                                           Opacity="2"
-                                           Grid.Row="1" Grid.Column="2" 
-                                           VerticalOptions="Center" HorizontalOptions="End"/>
-
-                            </Grid>
-                        </ViewCell>
+                                    <Button Text="Remove"
+                                        Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.RemoveFromCartCommand}"
+                                        CommandParameter="{Binding .}"
+                                        BackgroundColor="DarkGoldenrod"
+                                        TextColor="Black"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-        </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
 
             <Button 
                     x:Name="ClearCartButton"
