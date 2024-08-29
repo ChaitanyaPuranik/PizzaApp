@@ -17,36 +17,44 @@
                                CornerRadius="5"
                                HasShadow="True"
                                BackgroundColor="LightGoldenrodYellow">
+
                                 <HorizontalStackLayout Spacing="20">
-                                    
-                                    <StackLayout Spacing="10">
-                                        <Image  Source="{Binding Image}" HeightRequest="75" WidthRequest="75"/>
 
-                                        <Label Text="{Binding Name}" 
-                                               FontSize="Medium" 
+                                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                                        
+                                        <StackLayout Spacing="10" Grid.Column="0">
+                                            <Image  Source="{Binding Image}" HeightRequest="75" WidthRequest="75"/>
+
+                                            <Label Text="{Binding Name}" 
+                                                    FontSize="Medium" 
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"/>
+                                        </StackLayout>
+
+                                        <Label 
+                                               Grid.Column="1"
+                                               Text="{Binding Description}" 
+                                               FontSize="Small" 
                                                TextColor="Black"
-                                               FontAttributes="Bold"/>
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Center"/>
 
-                                    </StackLayout>
+                                        <Button Text="Remove"
+                                                Grid.Column="2"
+                                                Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.RemoveFromCartCommand}"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="DarkGoldenrod"
+                                                TextColor="Black"
+                                                HorizontalOptions="End"
+                                                VerticalOptions="Center"/>
+                                    </Grid>
                                     
-                                    <Label Text="{Binding Description}" 
-                                           FontSize="Small" 
-                                           TextColor="Black"/>
-
-                                    <Button Text="Remove"
-                                        Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.RemoveFromCartCommand}"
-                                        CommandParameter="{Binding .}"
-                                        BackgroundColor="DarkGoldenrod"
-                                        TextColor="Black"
-                                        HorizontalOptions="End"
-                                        VerticalOptions="Center"/>
                                 </HorizontalStackLayout>
                             </Frame>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
 
             <Button 
                     x:Name="ClearCartButton"

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TermProject.Business_Logic
 {
-    public class Bill
+    public class  Bill
     {
         Manager _manager;
 
-        public Bill(Manager manager)
+        public  Bill(Manager manager)
         {
             _manager = manager;
         }

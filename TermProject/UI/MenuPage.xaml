@@ -75,7 +75,7 @@
                                                TextColor="Black"
                                                FontAttributes="Bold" />
 
-                                        <Label Text="{Binding Price, StringFormat='Price: ${0:C}'}" 
+                                        <Label Text="{Binding Price, StringFormat='Price: ${0:F2}'}" 
                                                FontSize="Small" 
                                                TextColor="Black" />
 

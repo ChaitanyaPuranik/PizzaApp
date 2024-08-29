@@ -1,3 +1,4 @@
+using Microsoft.UI.Xaml.Controls;
 using System.Windows.Input;
 using TermProject.Business_Logic;
 
@@ -5,21 +6,24 @@ namespace TermProject.UI;
 
 public partial class ViewCart : ContentPage
 {
-	Manager _manager;
+	private Manager _manager;
+	private Bill _bill;
 	public ICommand RemoveFromCartCommand { get; set; }
-
+	
 	public ViewCart(Manager manager)
 	{
 		InitializeComponent();
-		_manager = manager;
 		RemoveFromCartCommand = new Command<Pizza>(OnRemoveFromCart);
-        Bill _bill = new Bill(_manager);
-		TotalPriceLabel.Text = $"$ {_bill.TotalPrice.ToString()}";
-        BindingContext = this;
+		_manager = manager;
+        _bill = new Bill(_manager);
+		
+		TotalPriceLabel.Text = $"{_bill.TotalPrice}";
+		TotalItemsLabel.Text = $"{_manager.SelectedPizzas.Count}";
+        
+		BindingContext = this;
 		PizzaCollection.ItemsSource = _manager.SelectedPizzas;
 		ClearCartbuttonVisibility();
-		TotalItemsLabel.Text = _manager.SelectedPizzas.Count.ToString();
-	}
+    }
 
 	private void ClearCartbuttonVisibility()
 	{
@@ -34,7 +38,10 @@ public partial class ViewCart : ContentPage
 	{
 		_manager.RemoveFromCart(selectedPizza);
         DisplayAlert("", $"{selectedPizza.Name} removed from cart", "Ok");
-
+		TotalItemsLabel.Text = "";
+		TotalPriceLabel.Text = "";
+        TotalPriceLabel.Text = $"{_bill.TotalPrice}";
+        TotalItemsLabel.Text = $"{_manager.SelectedPizzas.Count}";
     }
 
     private async void OnClickGoToMenu(object sender, EventArgs e)
@@ -45,7 +52,11 @@ public partial class ViewCart : ContentPage
 
     private void OnClickClearCart(object sender, EventArgs e)
     {
-		_manager.SelectedPizzas.Clear();
+        _manager.SelectedPizzas.Clear();
+        TotalItemsLabel.Text = "";
+        TotalPriceLabel.Text = "";
+        TotalPriceLabel.Text = $"{_bill.TotalPrice}";
+        TotalItemsLabel.Text = $"{_manager.SelectedPizzas.Count}";
     }
 
     private void OnTapCheckout(object sender, TappedEventArgs e)
