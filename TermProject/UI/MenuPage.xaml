@@ -61,58 +61,58 @@
                     <DataTemplate>
                         <Grid Padding="10">
                             <Frame BorderColor="LightGoldenrodYellow" 
-                       CornerRadius="5"
-                       HasShadow="True"
-                       BackgroundColor="LightGoldenrodYellow">
+                                   CornerRadius="5"
+                                   HasShadow="True"
+                                   BackgroundColor="LightGoldenrodYellow">
                                 <StackLayout>
                                     <Image Source="{Binding Image}" HeightRequest="75" WidthRequest="75"/>
 
                                     <Label Text="{Binding Name}" 
-                               FontSize="Medium" 
-                               TextColor="Black"
-                               FontAttributes="Bold" />
+                                           FontSize="Medium" 
+                                           TextColor="Black"
+                                           FontAttributes="Bold" />
 
                                     <Label Text="{Binding Price, StringFormat='Price: ${0:F2}'}" 
-                               FontSize="Small" 
-                               TextColor="Black" />
+                                           FontSize="Small" 
+                                           TextColor="Black" />
 
                                     <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
 
                                         <ImageButton
-                                x:Name="MinusButton"
-                                Source="minus.png"
-                                Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.DecreaseQuantityCommand}"
-                                CommandParameter="{Binding .}"
-                                HeightRequest="30"
-                                WidthRequest="30"
-                                VerticalOptions="Center"
-                                IsVisible="{Binding IsQuantityControlsVisible}"/>
+                                                x:Name="MinusButton"
+                                                Source="minus.png"
+                                                Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.DecreaseQuantityCommand}"
+                                                CommandParameter="{Binding .}"
+                                                HeightRequest="30"
+                                                WidthRequest="30"
+                                                VerticalOptions="Center"
+                                                IsVisible="{Binding IsQuantityControlsVisible}"/>
 
                                         <Button x:Name="AddButton"
-                                    Text="Add To Cart"
-                                    Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.AddToCartCommand}"
-                                    CommandParameter="{Binding .}"
-                                    BackgroundColor="DarkGoldenrod"
-                                    TextColor="Black"
-                                    HorizontalOptions="Center"
-                                    IsVisible="{Binding IsAddButtonVisible}"/>
+                                                Text="Add To Cart"
+                                                Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.AddToCartCommand}"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="DarkGoldenrod"
+                                                TextColor="Black"
+                                                HorizontalOptions="Center"
+                                                IsVisible="{Binding IsAddButtonVisible}"/>
 
                                         <Label x:Name="QtyLabel"
-                                   VerticalOptions="Center"
-                                   Text="{Binding Quantity}"
-                                   TextColor="Black"
-                                   FontAttributes="Bold"
-                                   FontSize="Medium"
-                                   IsVisible="{Binding IsQuantityControlsVisible}"/>
+                                               VerticalOptions="Center"
+                                               Text="{Binding Quantity}"
+                                               TextColor="Black"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium"
+                                               IsVisible="{Binding IsQuantityControlsVisible}"/>
 
                                         <ImageButton x:Name="PlusButton"
-                                         Source="plus.png"
-                                         Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.IncreaseQuantityCommand}"
-                                         CommandParameter="{Binding .}"
-                                         HeightRequest="30"
-                                         WidthRequest="30"
-                                         VerticalOptions="Center"
-                                         IsVisible="{Binding IsQuantityControlsVisible}"/>
+                                                    Source="plus.png"
+                                                    Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.IncreaseQuantityCommand}"
+                                                    CommandParameter="{Binding .}"
+                                                    HeightRequest="30"
+                                                    WidthRequest="30"
+                                                    VerticalOptions="Center"
+                                                    IsVisible="{Binding IsQuantityControlsVisible}"/>
                                     </HorizontalStackLayout>
                                 </StackLayout>
                             </Frame>

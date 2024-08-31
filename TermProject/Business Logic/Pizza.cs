@@ -71,7 +71,7 @@ namespace TermProject.Business_Logic
 
         public double Price
         {
-            get { return _price; }
+            get { return _price * _qty; }
             private set
             {
                 if (value <= 0)

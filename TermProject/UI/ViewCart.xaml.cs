@@ -17,8 +17,12 @@ public partial class ViewCart : ContentPage
 		_manager = manager;
         _bill = new Bill(_manager);
 		
-		TotalPriceLabel.Text = $"{_bill.TotalPrice}";
-		TotalItemsLabel.Text = $"{_manager.SelectedPizzas.Count}";
+		BillLabel.Text = $"""
+			Items: {_manager.SelectedPizzas.Count()}
+			Items Price: ${_bill.ItemsPrice}
+			HST(13%): ${_bill.HST}
+			Total Price: ${_bill.TotalPrice}
+			""";
         
 		BindingContext = this;
 		PizzaCollection.ItemsSource = _manager.SelectedPizzas;
@@ -31,6 +35,11 @@ public partial class ViewCart : ContentPage
 		{
 			ClearCartButton.IsEnabled = false;
 			ClearCartButton.IsVisible = false;
+
+			EmptyButton.IsEnabled = true;
+			EmptyButton.IsVisible = true;
+			EmptyLabel.IsEnabled = true;
+			EmptyLabel.IsVisible = true;
 		}
 	}
 
@@ -38,10 +47,6 @@ public partial class ViewCart : ContentPage
 	{
 		_manager.RemoveFromCart(selectedPizza);
         DisplayAlert("", $"{selectedPizza.Name} removed from cart", "Ok");
-		TotalItemsLabel.Text = "";
-		TotalPriceLabel.Text = "";
-        TotalPriceLabel.Text = $"{_bill.TotalPrice}";
-        TotalItemsLabel.Text = $"{_manager.SelectedPizzas.Count}";
     }
 
     private async void OnClickGoToMenu(object sender, EventArgs e)
@@ -53,14 +58,10 @@ public partial class ViewCart : ContentPage
     private void OnClickClearCart(object sender, EventArgs e)
     {
         _manager.SelectedPizzas.Clear();
-        TotalItemsLabel.Text = "";
-        TotalPriceLabel.Text = "";
-        TotalPriceLabel.Text = $"{_bill.TotalPrice}";
-        TotalItemsLabel.Text = $"{_manager.SelectedPizzas.Count}";
     }
 
-    private void OnTapCheckout(object sender, TappedEventArgs e)
+    private void OnClickCheckOut(object sender, EventArgs e)
     {
-		Navigation.PushAsync(new TermProject.UI.CheckOutPage());
+        Navigation.PushAsync(new TermProject.UI.CheckOutPage());
     }
 }

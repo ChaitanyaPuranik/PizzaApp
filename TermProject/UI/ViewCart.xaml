@@ -19,10 +19,8 @@
                                BackgroundColor="LightGoldenrodYellow">
 
                                 <HorizontalStackLayout Spacing="20">
-
-                                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
                                         
-                                        <StackLayout Spacing="10" Grid.Column="0">
+                                        <StackLayout Spacing="10" Padding="20">
                                             <Image  Source="{Binding Image}" HeightRequest="75" WidthRequest="75"/>
 
                                             <Label Text="{Binding Name}" 
@@ -32,7 +30,6 @@
                                         </StackLayout>
 
                                         <Label 
-                                               Grid.Column="1"
                                                Text="{Binding Description}" 
                                                FontSize="Small" 
                                                TextColor="Black"
@@ -40,15 +37,21 @@
                                                VerticalOptions="Center"/>
 
                                         <Button Text="Remove"
-                                                Grid.Column="2"
                                                 Command="{Binding Source={x:Reference PizzaCollection}, Path=BindingContext.RemoveFromCartCommand}"
                                                 CommandParameter="{Binding .}"
                                                 BackgroundColor="DarkGoldenrod"
                                                 TextColor="Black"
                                                 HorizontalOptions="End"
                                                 VerticalOptions="Center"/>
-                                    </Grid>
-                                    
+
+                                        <Label x:Name="QtyLabel"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="End"
+                                               TextColor="Black"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium"
+                                               />
+
                                 </HorizontalStackLayout>
                             </Frame>
                         </Grid>
@@ -87,62 +90,22 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
 
+            <Label
+                x:Name="BillLabel"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Medium"
+                Padding="10"
+                Margin="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                BackgroundColor="PaleGoldenrod"/>
 
-            <Border 
-                StrokeShape="RoundRectangle 30"
-                StrokeThickness="0"
+            <Button
+                Text="Checkout"
                 BackgroundColor="Goldenrod"
-                HeightRequest="50"
-                VerticalOptions="End"
-                Margin="10">
+                HorizontalOptions="Center"
+                Clicked="OnClickCheckOut"/>
 
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnTapCheckout"/>
-                </Border.GestureRecognizers>
-
-                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*,*">
-
-                    <Label
-                        Grid.Row="0" Grid.Column="0"
-                        Text="Total Items:"
-                        TextColor="Black"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        />
-
-                    <Label
-                        Grid.Row="0" Grid.Column="1"
-                        x:Name="TotalItemsLabel"
-                        TextColor="Black"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Start"
-                        />
-
-                    <Label
-                        Grid.Row="0" Grid.Column="2"
-                        x:Name="TotalPriceLabel"
-                        TextColor="Black"
-                        VerticalOptions="Start"
-                        HorizontalOptions="Center"
-                        Padding="10"/>
-
-
-                    <Label 
-                        Grid.Row="1" Grid.Column="1"
-                        Text="Checkout"
-                        TextColor="Black"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        Padding="0,0,0,10"/>
-
-                </Grid>
-
-
-
-
-                
-            </Border>
-        
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
